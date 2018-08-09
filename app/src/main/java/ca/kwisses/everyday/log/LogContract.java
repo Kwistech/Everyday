@@ -3,6 +3,8 @@ package ca.kwisses.everyday.log;
 import java.util.Date;
 import java.util.List;
 
+import ca.kwisses.everyday.list.ListItem;
+
 public interface LogContract {
 
     interface Object {
@@ -25,7 +27,7 @@ public interface LogContract {
 
         void setLog(Log log);
 
-        boolean isValidListItem(String item);
+        boolean isValidListItem(ListItem listItem);
 
         Date getCurrentDate();
 
