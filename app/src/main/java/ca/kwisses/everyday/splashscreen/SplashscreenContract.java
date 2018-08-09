@@ -6,7 +6,7 @@ import android.content.Intent;
 public interface SplashscreenContract {
 
     interface View {
-        
+
     }
 
     interface Presenter {
