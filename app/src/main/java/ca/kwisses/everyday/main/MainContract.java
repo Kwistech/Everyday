@@ -47,4 +47,10 @@ public interface MainContract {
         void setDBHandler(DBHandler dbHandler);
 
     }
+
+    interface Listener {
+
+        // onTouchListeners for MainActivity views
+
+    }
 }
