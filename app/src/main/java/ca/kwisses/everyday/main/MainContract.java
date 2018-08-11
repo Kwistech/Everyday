@@ -14,13 +14,17 @@ public interface MainContract {
 
         void setObjectViews(MainPresenter mainPresenter);
 
-        String getTitle();
+        String getViewTitle();
 
         void setTitle(String title);
 
     }
 
     interface Presenter {
+
+        void initObjects();
+
+        void initPresenters();
 
         UserPresenter getUserPresenter();
 

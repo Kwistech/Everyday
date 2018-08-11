@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface SettingsContract {
 
-    interface View {
+    interface Object {
 
         void setAutoClear(boolean autoClear);
 
@@ -15,6 +15,8 @@ public interface SettingsContract {
     interface Presenter {
 
         void clearAllListItemChecks(List<List> list);
+
+        Settings getSettings();
 
     }
 }
