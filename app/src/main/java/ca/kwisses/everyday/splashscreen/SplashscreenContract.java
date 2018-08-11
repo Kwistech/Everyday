@@ -1,6 +1,5 @@
 package ca.kwisses.everyday.splashscreen;
 
-import android.content.Context;
 import android.content.Intent;
 
 public interface SplashscreenContract {
@@ -11,12 +10,9 @@ public interface SplashscreenContract {
 
     interface Presenter {
 
-        View getContentView();
+        int getContentView();
 
-        Intent getIntent(Context context);
-
-        void run();
-
+        Intent getIntent();
     }
 
 }
