@@ -1,6 +1,6 @@
 package ca.kwisses.everyday.main;
 
-import ca.kwisses.everyday.dbhandler.DBHandler;
+import ca.kwisses.everyday.dbhandler.DBHandlerPresenter;
 import ca.kwisses.everyday.list.ListItemPresenter;
 import ca.kwisses.everyday.list.ListPresenter;
 import ca.kwisses.everyday.log.LogPresenter;
@@ -46,9 +46,9 @@ public interface MainContract {
 
         void setSettingsPresenter(SettingsPresenter settingsPresenter);
 
-        DBHandler getDBHandler();
+        DBHandlerPresenter getDBHandlerPresenter();
 
-        void setDBHandler(DBHandler dbHandler);
+        void setDBHandlerPresenter(DBHandlerPresenter dbHandlerPresenter);
 
     }
 

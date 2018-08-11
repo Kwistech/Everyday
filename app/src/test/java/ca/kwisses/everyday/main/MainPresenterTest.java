@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ca.kwisses.everyday.dbhandler.DBHandler;
+import ca.kwisses.everyday.dbhandler.DBHandlerPresenter;
 import ca.kwisses.everyday.list.ListItem;
 import ca.kwisses.everyday.list.ListItemPresenter;
 import ca.kwisses.everyday.log.Log;
@@ -56,7 +57,8 @@ public class MainPresenterTest {
 
     @Test
     public void initObjects_GetDBHandler_DBHandlerNotNull() {
-        DBHandler dbHandler = mainPresenter.getDBHandler();
+        DBHandlerPresenter dbHandlerPresenter = mainPresenter.getDBHandlerPresenter();
+        DBHandler dbHandler = dbHandlerPresenter.getDBHandler();
         assertNotNull(dbHandler);
     }
 
@@ -85,6 +87,11 @@ public class MainPresenterTest {
     @Test
     public void initPresenters_InitSettingsPresenter_SettingsPresenterNotNull() {
         assertNotNull(mainPresenter.getSettingsPresenter());
+    }
+
+    @Test
+    public void initPresenters_InitDBHandlerPresenter_DBHandlerPresenterNotNull() {
+        assertNotNull(mainPresenter.getDBHandlerPresenter());
     }
 
 }

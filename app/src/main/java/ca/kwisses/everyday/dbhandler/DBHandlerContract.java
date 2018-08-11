@@ -29,6 +29,10 @@ public interface DBHandlerContract {
         boolean isValidQuery(String query);
 
         boolean isValidID(String id);
+
+        DBHandler getDBHandler();
+
+        void setDBHandler(DBHandler dbHandler);
     }
 
 }

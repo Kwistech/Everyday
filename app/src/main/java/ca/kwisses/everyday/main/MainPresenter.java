@@ -1,6 +1,7 @@
 package ca.kwisses.everyday.main;
 
 import ca.kwisses.everyday.dbhandler.DBHandler;
+import ca.kwisses.everyday.dbhandler.DBHandlerPresenter;
 import ca.kwisses.everyday.list.ListItem;
 import ca.kwisses.everyday.list.ListItemPresenter;
 import ca.kwisses.everyday.list.ListPresenter;
@@ -24,6 +25,7 @@ public class MainPresenter implements MainContract.Presenter {
     private ListItemPresenter listItemPresenter;
     private LogPresenter logPresenter;
     private SettingsPresenter settingsPresenter;
+    private DBHandlerPresenter dbHandlerPresenter;
 
     MainPresenter() {
         initObjects();
@@ -46,6 +48,7 @@ public class MainPresenter implements MainContract.Presenter {
         listItemPresenter = new ListItemPresenter(listItem);
         logPresenter = new LogPresenter(log);
         settingsPresenter = new SettingsPresenter(settings);
+        dbHandlerPresenter = new DBHandlerPresenter(dbHandler);
     }
 
     @Override
@@ -99,12 +102,12 @@ public class MainPresenter implements MainContract.Presenter {
     }
 
     @Override
-    public DBHandler getDBHandler() {
-        return dbHandler;
+    public DBHandlerPresenter getDBHandlerPresenter() {
+        return dbHandlerPresenter;
     }
 
     @Override
-    public void setDBHandler(DBHandler dbHandler) {
-        this.dbHandler = dbHandler;
+    public void setDBHandlerPresenter(DBHandlerPresenter dbHandlerPresenter) {
+        this.dbHandlerPresenter = dbHandlerPresenter;
     }
 }

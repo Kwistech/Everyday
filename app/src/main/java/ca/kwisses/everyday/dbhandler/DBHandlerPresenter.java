@@ -4,7 +4,7 @@ public class DBHandlerPresenter implements DBHandlerContract.Presenter{
 
     private DBHandler dbHandler;
 
-    DBHandlerPresenter(DBHandler dbHandler) {
+    public DBHandlerPresenter(DBHandler dbHandler) {
         this.dbHandler = dbHandler;
     }
 
@@ -26,5 +26,16 @@ public class DBHandlerPresenter implements DBHandlerContract.Presenter{
     @Override
     public boolean isValidID(String id) {
         return false;
+    }
+
+
+    @Override
+    public DBHandler getDBHandler() {
+        return dbHandler;
+    }
+
+    @Override
+    public void setDBHandler(DBHandler dbHandler) {
+        this.dbHandler = dbHandler;
     }
 }
