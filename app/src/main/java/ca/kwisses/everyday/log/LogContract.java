@@ -24,27 +24,27 @@ public interface LogContract {
 
     interface Object {
 
-        Log getLog();
+        List< List<ListItem> > get(); // change return value
 
-        void setLog(Log log);
+        void setLog(List< List<ListItem> > log);
 
-        List<String> getList();
+        List<ListItem> getList();
 
-        void setList(List<String> list);
+        void setList(List<ListItem> list);
 
     }
 
     interface Presenter {
 
-        void addToLog(List<String> list);
-
         Log getLog();
 
         void setLog(Log log);
 
-        boolean isValidListItem(ListItem listItem);
+        boolean addToLog(List<ListItem> listItem);
 
-        Date getCurrentDate();
+        boolean isValidListItem(List<ListItem> listItem);
+
+        String getCurrentDate();
 
     }
 

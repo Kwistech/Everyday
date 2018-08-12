@@ -14,7 +14,7 @@ public interface SettingsContract {
 
     interface Presenter {
 
-        void clearAllListItemChecks(List<List> list);
+        boolean clearAllListItemChecks(List<List> list);
 
         Settings getSettings();
 

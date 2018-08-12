@@ -14,12 +14,12 @@ public class UserPresenter implements UserContract.Presenter {
     }
 
     @Override
-    public void getUserData() {
-
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
-    public void setUser(User user) {
+    public void getUserData() {
 
     }
 

@@ -2,29 +2,34 @@ package ca.kwisses.everyday.log;
 
 import java.util.List;
 
+import ca.kwisses.everyday.list.ListItem;
+
 public class Log implements LogContract.Object {
+
+    private List<ListItem> listItems;
+    private List< List<ListItem> > log;
 
     public Log() {
 
     }
 
     @Override
-    public Log getLog() {
-        return null;
+    public List< List<ListItem> > get() {
+        return log;
     }
 
     @Override
-    public void setLog(Log log) {
-
+    public void setLog(List< List<ListItem> > log) {
+        this.log = log;
     }
 
     @Override
-    public List<String> getList() {
-        return null;
+    public List<ListItem> getList() {
+        return listItems;
     }
 
     @Override
-    public void setList(List<String> list) {
-
+    public void setList(List<ListItem> listItem) {
+        this.listItems = listItem;
     }
 }

@@ -11,8 +11,9 @@ public class SettingsPresenter implements SettingsContract.Presenter {
     }
 
     @Override
-    public void clearAllListItemChecks(List<List> list) {
-
+    public boolean clearAllListItemChecks(List<List> list) {
+        // Add implementation here.
+        return false;
     }
 
     @Override
