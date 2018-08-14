@@ -7,6 +7,9 @@ import ca.kwisses.everyday.dbhandler.DBHandler;
 
 public class LogActivity extends AppCompatActivity implements LogContract.View {
 
+    private String title;
+    private DBHandler dbHandler;
+
     LogActivity() {
 
     }
@@ -24,17 +27,17 @@ public class LogActivity extends AppCompatActivity implements LogContract.View {
 
     @Override
     public void setTitle(String title) {
-
+        this.title = title;
     }
 
     @Override
     public DBHandler getDBHandler() {
-        return null;
+        return dbHandler;
     }
 
     @Override
     public void setDBHandler(DBHandler dbHandler) {
-
+        this.dbHandler = dbHandler;
     }
 
     @Override

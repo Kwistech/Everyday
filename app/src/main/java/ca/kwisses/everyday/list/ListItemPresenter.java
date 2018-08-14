@@ -6,7 +6,6 @@ public class ListItemPresenter implements ListItemContract.Presenter {
 
     public ListItemPresenter(ListItem listItem) {
         this.listItem = listItem;
-
     }
 
     @Override

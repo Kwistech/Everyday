@@ -3,31 +3,22 @@ package ca.kwisses.everyday.dbhandler;
 public class DBHandlerPresenter implements DBHandlerContract.Presenter{
 
     private DBHandler dbHandler;
+    private String[] ids;
 
     public DBHandlerPresenter(DBHandler dbHandler) {
         this.dbHandler = dbHandler;
-    }
-
-    @Override
-    public void setIDs(String[] ids) {
-
+        ids = null;
     }
 
     @Override
     public String[] getIDs() {
-        return new String[0];
+        return ids;
     }
 
     @Override
-    public boolean isValidQuery(String query) {
-        return false;
+    public void setIDs(String[] ids) {
+        this.ids = ids;
     }
-
-    @Override
-    public boolean isValidID(String id) {
-        return false;
-    }
-
 
     @Override
     public DBHandler getDBHandler() {
@@ -37,5 +28,15 @@ public class DBHandlerPresenter implements DBHandlerContract.Presenter{
     @Override
     public void setDBHandler(DBHandler dbHandler) {
         this.dbHandler = dbHandler;
+    }
+
+    @Override
+    public boolean isValidQuery(String query) {
+        return query.length() != 0;
+    }
+
+    @Override
+    public boolean isValidID(String id) {
+        return id.length() != 0;
     }
 }
