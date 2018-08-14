@@ -1,22 +1,23 @@
 package ca.kwisses.everyday.dbhandler;
 
 import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 
 public interface DBHandlerContract {
 
     interface Object {
 
-        void createDB();
+        void initQuery();
 
-        void executeQuery();
+        void parseItems(String[] items);
+
+        void parseDatabase();
+
+        String getQuery();
 
         ContentValues getContentValues();
 
         void getDataFromDatabase(); // Change void to a return value
-
-        void parseIDs(String[] ids);
-
-        void parseDatabase();
 
     }
 

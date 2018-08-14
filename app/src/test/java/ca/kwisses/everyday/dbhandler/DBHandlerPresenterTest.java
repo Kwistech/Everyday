@@ -13,7 +13,7 @@ public class DBHandlerPresenterTest {
 
     @Before
     public void setup() {
-        dbHandler = new DBHandler();
+        dbHandler = new DBHandler(null, null);
         dbHandlerPresenter = new DBHandlerPresenter(dbHandler);
     }
 

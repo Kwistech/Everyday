@@ -1,5 +1,7 @@
 package ca.kwisses.everyday.main;
 
+import android.content.Context;
+
 import ca.kwisses.everyday.dbhandler.DBHandler;
 import ca.kwisses.everyday.dbhandler.DBHandlerPresenter;
 import ca.kwisses.everyday.list.ListItem;
@@ -14,6 +16,8 @@ import ca.kwisses.everyday.user.UserPresenter;
 
 public class MainPresenter implements MainContract.Presenter {
 
+    private Context context;
+
     private User user;
     private ListItem listItem;
     private Log log;
@@ -27,7 +31,8 @@ public class MainPresenter implements MainContract.Presenter {
     private SettingsPresenter settingsPresenter;
     private DBHandlerPresenter dbHandlerPresenter;
 
-    MainPresenter() {
+    MainPresenter(Context context) {
+        this.context = context;
         initObjects();
         initPresenters();
     }
@@ -38,7 +43,7 @@ public class MainPresenter implements MainContract.Presenter {
         listItem = new ListItem();
         log = new Log();
         settings = new Settings();
-        dbHandler = new DBHandler();
+        dbHandler = new DBHandler(context, null);
     }
 
     @Override

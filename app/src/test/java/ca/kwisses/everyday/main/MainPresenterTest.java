@@ -22,7 +22,7 @@ public class MainPresenterTest {
 
     @Before
     public void setup() {
-        mainPresenter = new MainPresenter();
+        mainPresenter = new MainPresenter(null);
     }
 
     // initObjects() TestMethods
