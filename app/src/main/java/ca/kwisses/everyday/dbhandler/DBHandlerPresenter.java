@@ -39,4 +39,9 @@ public class DBHandlerPresenter implements DBHandlerContract.Presenter{
     public boolean isValidID(String id) {
         return id.length() != 0;
     }
+
+    @Override
+    public boolean stringArrayIsOfCertainLength(String[] strings, int length) {
+        return strings.length == length;
+    }
 }

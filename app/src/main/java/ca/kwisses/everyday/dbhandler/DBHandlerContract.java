@@ -1,7 +1,10 @@
 package ca.kwisses.everyday.dbhandler;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
+import java.util.List;
 
 public interface DBHandlerContract {
 
@@ -9,15 +12,23 @@ public interface DBHandlerContract {
 
         void initQuery();
 
-        void parseItems(String[] items);
+        void parseItems(ContentValues contentValues, String[] items);
 
-        void parseDatabase();
+        List<String[]> getDataFromDatabase(SQLiteDatabase db);
 
         String getQuery();
 
         ContentValues getContentValues();
 
-        void getDataFromDatabase(); // Change void to a return value
+        void setContentValues(ContentValues contentValues);
+
+        SQLiteDatabase getDatabase();
+
+        void setDatabase(SQLiteDatabase db);
+
+        Cursor getCursor();
+
+        void setCursor(Cursor cursor);
 
     }
 
@@ -27,13 +38,15 @@ public interface DBHandlerContract {
 
         String[] getIDs();
 
+        DBHandler getDBHandler();
+
+        void setDBHandler(DBHandler dbHandler);
+
         boolean isValidQuery(String query);
 
         boolean isValidID(String id);
 
-        DBHandler getDBHandler();
-
-        void setDBHandler(DBHandler dbHandler);
+        boolean stringArrayIsOfCertainLength(String[] strings, int length);
     }
 
 }

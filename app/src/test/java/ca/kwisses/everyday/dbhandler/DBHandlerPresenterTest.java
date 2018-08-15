@@ -49,4 +49,30 @@ public class DBHandlerPresenterTest {
         assertFalse(valid);
     }
 
+    // stringArrayIsOfCertainLength() Test Methods
+
+    @Test
+    public void stringArrayIsOfCertainLength_PassEqualLengthStringArray_CertainLengthIsTrue() {
+        String[] strings = {"zero", "one", "two", "three", "four", "five"};
+        int length = 6;
+        boolean certainLength = dbHandlerPresenter.stringArrayIsOfCertainLength(strings, length);
+        assertTrue(certainLength);
+    }
+
+    @Test
+    public void stringArrayIsOfCertainLength_PassShorterLengthStringArray_CertainLengthIsFalse() {
+        String[] strings = {"zero", "one", "two"};
+        int length = 5;
+        boolean certainLength = dbHandlerPresenter.stringArrayIsOfCertainLength(strings, length);
+        assertFalse(certainLength);
+    }
+
+    @Test
+    public void stringArrayIsOfCertainLength_PassLongerLengthStringArray_CertainLengthIsFalse() {
+        String[] strings = {"zero", "one", "two", "three", "four", "five", "six", "seven"};
+        int length = 2;
+        boolean certainLength = dbHandlerPresenter.stringArrayIsOfCertainLength(strings, length);
+        assertFalse(certainLength);
+    }
+
 }
