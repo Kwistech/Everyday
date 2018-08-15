@@ -16,6 +16,8 @@ public interface DBHandlerContract {
 
         List<String[]> getDataFromDatabase(SQLiteDatabase db);
 
+        String[] getRowData(Cursor cursor);
+
         String getQuery();
 
         ContentValues getContentValues();

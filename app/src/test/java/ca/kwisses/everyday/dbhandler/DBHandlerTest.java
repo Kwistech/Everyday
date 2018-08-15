@@ -33,7 +33,6 @@ public class DBHandlerTest {
         String query = dbHandler.getQuery();
         boolean valid = dbHandlerPresenter.isValidQuery(query);
         assertTrue(valid);
-
     }
 
     // parseIDs() Test Methods
@@ -47,18 +46,6 @@ public class DBHandlerTest {
 
         when(mockContentValues.get("_id")).thenReturn(1);
         assertNotNull(contentValues.get("_id"));
-    }
-
-    // getDateFromDatabase() Test Methods
-
-    @Test
-    public void getDataFromDatabase_() {
-
-    }
-
-    @Test
-    public void getDataFromDatabase() {
-
     }
 
 }

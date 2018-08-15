@@ -72,7 +72,7 @@ public class DBHandler extends SQLiteOpenHelper implements DBHandlerContract.Obj
 
     @Override
     public List<String[]> getDataFromDatabase(SQLiteDatabase db) {
-        List<String[]> allData = new ArrayList<>();
+        List<String[]> tableData = new ArrayList<>();
         String dbQuery = "SELECT * FROM " + TABLE_NAME + " WHERE 1";
 
         // Cursor point to a location in results
@@ -80,33 +80,39 @@ public class DBHandler extends SQLiteOpenHelper implements DBHandlerContract.Obj
         cursor.moveToFirst(); // Move to the first row in results
 
         while(!cursor.isAfterLast()) {
-            String[] dailyData = new String[NUM_OF_COLUMNS];
-
-            if(cursor.getString(cursor.getColumnIndex(ID)) != null) {
-                dailyData[0] = cursor.getString(cursor.getColumnIndex(ID));
-            }
-            if(cursor.getString(cursor.getColumnIndex(ITEM_ONE)) != null) {
-                dailyData[1] = cursor.getString(cursor.getColumnIndex(ITEM_ONE));
-            }
-            if(cursor.getString(cursor.getColumnIndex(ITEM_TWO)) != null) {
-                dailyData[2] = cursor.getString(cursor.getColumnIndex(ITEM_TWO));
-            }
-            if(cursor.getString(cursor.getColumnIndex(ITEM_THREE)) != null) {
-                dailyData[3] = cursor.getString(cursor.getColumnIndex(ITEM_THREE));
-            }
-            if(cursor.getString(cursor.getColumnIndex(ITEM_FOUR)) != null) {
-                dailyData[4] = cursor.getString(cursor.getColumnIndex(ITEM_FOUR));
-            }
-            if(cursor.getString(cursor.getColumnIndex(ITEM_FIVE)) != null) {
-                dailyData[4] = cursor.getString(cursor.getColumnIndex(ITEM_FIVE));
-            }
-
-            allData.add(dailyData);
+            String[] rowData = getRowData(cursor);
+            tableData.add(rowData);
             cursor.moveToNext();
         }
 
         db.close();
-        return allData;
+        return tableData;
+    }
+
+    @Override
+    public String[] getRowData(Cursor cursor) {
+        String[] rowData = new String[NUM_OF_COLUMNS];
+
+        if(cursor.getString(cursor.getColumnIndex(ID)) != null) {
+            rowData[0] = cursor.getString(cursor.getColumnIndex(ID));
+        }
+        if(cursor.getString(cursor.getColumnIndex(ITEM_ONE)) != null) {
+            rowData[1] = cursor.getString(cursor.getColumnIndex(ITEM_ONE));
+        }
+        if(cursor.getString(cursor.getColumnIndex(ITEM_TWO)) != null) {
+            rowData[2] = cursor.getString(cursor.getColumnIndex(ITEM_TWO));
+        }
+        if(cursor.getString(cursor.getColumnIndex(ITEM_THREE)) != null) {
+            rowData[3] = cursor.getString(cursor.getColumnIndex(ITEM_THREE));
+        }
+        if(cursor.getString(cursor.getColumnIndex(ITEM_FOUR)) != null) {
+            rowData[4] = cursor.getString(cursor.getColumnIndex(ITEM_FOUR));
+        }
+        if(cursor.getString(cursor.getColumnIndex(ITEM_FIVE)) != null) {
+            rowData[5] = cursor.getString(cursor.getColumnIndex(ITEM_FIVE));
+        }
+
+        return rowData;
     }
 
     @Override
