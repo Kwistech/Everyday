@@ -7,4 +7,6 @@
     <string name="checkbox">CheckBox</string>
     <string name="optionsbutton">optionsButton</string>
     <string name="task">Task</string>
+    <string name="addTaskButton">Add Task</string>
+    <string name="deleteTaskButton">Delete Task</string>
 </resources>

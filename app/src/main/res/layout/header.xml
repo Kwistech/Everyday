@@ -38,5 +38,6 @@
             android:layout_weight="1"
             android:contentDescription="@string/optionsbutton"
             app:srcCompat="@android:drawable/arrow_down_float" />
+
     </LinearLayout>
 </android.widget.RelativeLayout>
