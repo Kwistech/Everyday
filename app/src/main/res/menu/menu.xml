@@ -2,6 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
+    <!-- home.png icon made my Freepik (http://www.freepik.com/) from www.flaticon.com -->
         <item
             android:id="@+id/home_button"
             android:enabled="true"
@@ -9,6 +11,7 @@
             android:title="@string/home"
             app:showAsAction="ifRoom" />
 
+    <!-- log.png icon made my Freepik (http://www.freepik.com/) from www.flaticon.com -->
         <item
             android:id="@+id/log_button"
             android:enabled="true"
@@ -16,6 +19,8 @@
             android:title="@string/log"
             app:showAsAction="ifRoom" />
 
+    <!-- settings.png icon made my Egor Rumyantsev (http://www.behance.com/pio-5) from www.flaticon.com
+    Used under CC 3.0 BY Licence: https://creativecommons.org/licenses/by/3.0/ -->
         <item
             android:id="@+id/settings_button"
             android:enabled="true"
