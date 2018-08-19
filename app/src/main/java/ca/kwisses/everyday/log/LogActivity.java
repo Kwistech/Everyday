@@ -10,7 +10,7 @@ public class LogActivity extends AppCompatActivity implements LogContract.View {
     private String title;
     private DBHandler dbHandler;
 
-    LogActivity() {
+    public LogActivity() {
 
     }
 

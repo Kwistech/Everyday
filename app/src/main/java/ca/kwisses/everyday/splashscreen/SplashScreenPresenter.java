@@ -13,7 +13,6 @@ public class SplashScreenPresenter extends Thread implements SplashscreenContrac
 
     SplashScreenPresenter(Context context) {
         this.context = context;
-        this.start();
     }
 
     @Override
@@ -31,6 +30,7 @@ public class SplashScreenPresenter extends Thread implements SplashscreenContrac
         Intent intent = getIntent();
 
         try {
+            sleep(1000); // shows splashscreen
             context.startActivity(intent);
             Activity activity = (Activity) context;
             activity.finish();
@@ -38,6 +38,8 @@ public class SplashScreenPresenter extends Thread implements SplashscreenContrac
             throw new ClassCastException();
         } catch(NullPointerException e) {
             throw new NullPointerException();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }
