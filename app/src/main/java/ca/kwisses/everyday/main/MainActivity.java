@@ -2,6 +2,7 @@ package ca.kwisses.everyday.main;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Window;
 
 import ca.kwisses.everyday.R;
 
