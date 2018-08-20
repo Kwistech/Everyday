@@ -3,6 +3,9 @@ package ca.kwisses.everyday.main;
 import ca.kwisses.everyday.dbhandler.DBHandlerPresenter;
 import ca.kwisses.everyday.list.ListItemPresenter;
 import ca.kwisses.everyday.list.ListPresenter;
+import ca.kwisses.everyday.listeners.HeaderListener;
+import ca.kwisses.everyday.listeners.ListListener;
+import ca.kwisses.everyday.listeners.MenuListener;
 import ca.kwisses.everyday.log.LogPresenter;
 import ca.kwisses.everyday.settings.SettingsPresenter;
 import ca.kwisses.everyday.user.UserPresenter;
@@ -54,7 +57,14 @@ public interface MainContract {
 
     interface Listener {
 
-        // onTouchListeners for MainActivity views
+        // onClickListeners for MainActivity views
+        void initListeners();
+
+        HeaderListener getHeaderListener();
+
+        ListListener getListListener();
+
+        MenuListener getMenuListener();
 
     }
 }

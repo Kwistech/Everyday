@@ -1,10 +1,8 @@
 package ca.kwisses.everyday.log;
 
-public class LogListener implements LogContract.Listener {
+import ca.kwisses.everyday.log.LogContract;
 
-    LogListener() {
-
-    }
+public class LogActivityListener implements LogContract.Listener {
 
     @Override
     public void onTouchBackButton(LogContract.View view) {
