@@ -1,5 +1,7 @@
 package ca.kwisses.everyday.main;
 
+import android.content.Context;
+
 import ca.kwisses.everyday.dbhandler.DBHandlerPresenter;
 import ca.kwisses.everyday.list.ListItemPresenter;
 import ca.kwisses.everyday.list.ListPresenter;
@@ -58,7 +60,7 @@ public interface MainContract {
     interface Listener {
 
         // onClickListeners for MainActivity views
-        void initListeners();
+        void initListeners(Context context);
 
         HeaderListener getHeaderListener();
 

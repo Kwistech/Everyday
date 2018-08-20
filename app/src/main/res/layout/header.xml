@@ -37,6 +37,7 @@
             android:layout_height="42dp"
             android:layout_weight="1"
             android:contentDescription="@string/optionsbutton"
+            android:onClick="onOptionsMenuClick"
             app:srcCompat="@android:drawable/arrow_down_float" />
 
     </LinearLayout>
