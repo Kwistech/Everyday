@@ -2,25 +2,42 @@ package ca.kwisses.everyday.listeners;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.PopupMenu;
 
 public interface ListenerContract {
 
-    interface Header extends View.OnClickListener{
-        void onOptionsMenuClick(View view, Context context);
+    interface Header extends View.OnClickListener {
+
         Context getContext();
+
         void setContext(Context context);
+
+        PopupMenu getPopupMenu();
+
+        void initPopupMenu(View view);
+
     }
 
-    interface _List extends View.OnClickListener{
-        void onCheckBoxClick(View view);
+    interface _List extends View.OnClickListener {
+
+
     }
 
-    interface Menu extends View.OnClickListener{
-        void onMenuChoiceClick(View view);
+    interface Menu extends View.OnClickListener {
+
+
     }
 
-    interface OptionsMenu extends View.OnClickListener{
-        void onOptionsMenuChoiceClick(View view);
+    interface OptionsMenu extends PopupMenu.OnMenuItemClickListener {
+
+        void setPopupMenu(View view);
+
+        PopupMenu getPopupMenu();
+
+        void addTaskItemToList();
+
+        void deleteTaskItemFromList();
+
     }
 
 }

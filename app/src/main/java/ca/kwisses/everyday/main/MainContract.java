@@ -8,6 +8,7 @@ import ca.kwisses.everyday.list.ListPresenter;
 import ca.kwisses.everyday.listeners.HeaderListener;
 import ca.kwisses.everyday.listeners.ListListener;
 import ca.kwisses.everyday.listeners.MenuListener;
+import ca.kwisses.everyday.listeners.OptionsMenuListener;
 import ca.kwisses.everyday.log.LogPresenter;
 import ca.kwisses.everyday.settings.SettingsPresenter;
 import ca.kwisses.everyday.user.UserPresenter;
@@ -18,10 +19,6 @@ public interface MainContract {
     interface View {
 
         void setObjectViews(MainPresenter mainPresenter);
-
-        String getViewTitle();
-
-        void setTitle(String title);
 
     }
 
@@ -67,6 +64,8 @@ public interface MainContract {
         ListListener getListListener();
 
         MenuListener getMenuListener();
+
+        OptionsMenuListener getOptionsMenuListener();
 
     }
 }

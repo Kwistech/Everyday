@@ -8,6 +8,8 @@ import ca.kwisses.everyday.R;
 
 public class MainActivity extends AppCompatActivity implements MainContract.View {
 
+    private View view;
+
     private MainPresenter mainPresenter;
     private MainActivityListener mainActivityListener;
 
@@ -16,24 +18,18 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        view = findViewById(android.R.id.content);
+
         mainPresenter = new MainPresenter(this);
-        mainActivityListener = new MainActivityListener(this);
+        mainActivityListener = new MainActivityListener(this, view);
+
         setObjectViews(mainPresenter);
     }
 
     @Override
     public void setObjectViews(MainPresenter mainPresenter) {
-        View view = findViewById(R.id.optionsButton);
-        view.setOnClickListener(mainActivityListener.getHeaderListener());
+        View optionsButton = findViewById(R.id.optionsButton);
+        optionsButton.setOnClickListener(mainActivityListener.getHeaderListener());
     }
 
-    @Override
-    public String getViewTitle() {
-        return null;
-    }
-
-    @Override
-    public void setTitle(String title) {
-
-    }
 }

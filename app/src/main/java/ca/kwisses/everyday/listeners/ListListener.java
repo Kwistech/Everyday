@@ -15,9 +15,4 @@ public class ListListener implements ListenerContract._List {
     public void onClick(View v) {
 
     }
-
-    @Override
-    public void onCheckBoxClick(View view) {
-
-    }
 }

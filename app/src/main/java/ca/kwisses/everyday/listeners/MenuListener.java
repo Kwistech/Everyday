@@ -15,9 +15,4 @@ public class MenuListener implements ListenerContract.Menu {
     public void onClick(View v) {
 
     }
-
-    @Override
-    public void onMenuChoiceClick(View view) {
-
-    }
 }
