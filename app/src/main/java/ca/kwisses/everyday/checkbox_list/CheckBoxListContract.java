@@ -17,6 +17,14 @@ public interface CheckBoxListContract {
 
         CheckBox getNextInvisibleCheckBox();
 
+        void setNextInvisibleCheckBox(String text);
+
+        boolean taskExists(String task);
+
+        boolean addTaskItemToList(String text);
+
+        boolean deleteTaskItemFromList();
+
         List<CheckBox> getCheckBoxList();
 
     }

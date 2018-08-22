@@ -5,6 +5,8 @@ import android.view.MenuItem;
 import org.junit.Before;
 import org.junit.Test;
 
+import static junit.framework.Assert.assertNotNull;
+import static junit.framework.Assert.assertNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -23,4 +25,6 @@ public class OptionsMenuListenerTest {
         optionsMenuListener.onMenuItemClick(menuItem);
         verify(optionsMenuListener).onMenuItemClick(menuItem);
     }
+
+
 }

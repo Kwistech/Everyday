@@ -34,9 +34,11 @@ public interface ListenerContract {
 
         PopupMenu getPopupMenu();
 
-        void addTaskItemToList();
+        String getAddTextFieldString();
 
-        void deleteTaskItemFromList();
+        boolean addTask(String text);
+
+        boolean deleteTask(String text);
 
     }
 

@@ -9,6 +9,7 @@ import java.util.List;
 import ca.kwisses.everyday.R;
 
 import static android.view.View.INVISIBLE;
+import static android.view.View.VISIBLE;
 
 public class CheckBoxListHandler implements CheckBoxListContract.Handler {
 
@@ -18,8 +19,9 @@ public class CheckBoxListHandler implements CheckBoxListContract.Handler {
     private final int SIZE_LIMIT = 5;
 
     public CheckBoxListHandler(View view) {
-        checkBoxList = new ArrayList<>();
-        initCheckBoxList(view);
+        this.checkBoxList = new ArrayList<>();
+        this.view = view;
+        initCheckBoxList(this.view);
         setInvisible();
     }
 
@@ -42,7 +44,7 @@ public class CheckBoxListHandler implements CheckBoxListContract.Handler {
     @Override
     public boolean hasInvisibleCheckBox() {
         for (CheckBox checkBox: checkBoxList) {
-            if(!checkBox.isOpaque()) {
+            if(checkBox.getVisibility() == INVISIBLE) {
                 return true;
             }
         }
@@ -57,6 +59,38 @@ public class CheckBoxListHandler implements CheckBoxListContract.Handler {
             }
         }
         return null;
+    }
+
+    @Override
+    public void setNextInvisibleCheckBox(String text) {
+        CheckBox checkBox = getNextInvisibleCheckBox();
+        checkBox.setText(text);
+        checkBox.setChecked(false);
+        checkBox.setVisibility(VISIBLE);
+    }
+
+    @Override
+    public boolean taskExists(String task) {
+        for (CheckBox checkBox: checkBoxList) {
+            if(checkBox.getText().equals(task)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean addTaskItemToList(String task) {
+        if(hasInvisibleCheckBox() && !taskExists(task)) {
+            setNextInvisibleCheckBox(task);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean deleteTaskItemFromList() {
+        return false;
     }
 
     @Override

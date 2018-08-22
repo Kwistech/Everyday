@@ -5,8 +5,6 @@ import org.junit.Test;
 
 import ca.kwisses.everyday.dbhandler.DBHandler;
 import ca.kwisses.everyday.dbhandler.DBHandlerPresenter;
-import ca.kwisses.everyday.list.ListItem;
-import ca.kwisses.everyday.list.ListItemPresenter;
 import ca.kwisses.everyday.log.Log;
 import ca.kwisses.everyday.log.LogPresenter;
 import ca.kwisses.everyday.settings.Settings;
@@ -22,7 +20,7 @@ public class MainPresenterTest {
 
     @Before
     public void setup() {
-        mainPresenter = new MainPresenter(null);
+        mainPresenter = new MainPresenter(null, null);
     }
 
     // initObjects() TestMethods
@@ -32,13 +30,6 @@ public class MainPresenterTest {
         UserPresenter userPresenter = mainPresenter.getUserPresenter();
         User user = userPresenter.getUser();
         assertNotNull(user);
-    }
-
-    @Test
-    public void initObjects_GetListItem_ListItemNotNull() {
-        ListItemPresenter listItemPresenter = mainPresenter.getListItemPresenter();
-        ListItem listItem = listItemPresenter.getListItem();
-        assertNotNull(listItem);
     }
 
     @Test
@@ -67,16 +58,6 @@ public class MainPresenterTest {
     @Test
     public void initPresenters_InitUserPresenter_UserPresenterNotNull() {
         assertNotNull(mainPresenter.getUserPresenter());
-    }
-
-    @Test
-    public void initPresenters_InitListPresenter_ListPresenterNotNull() {
-        assertNotNull(mainPresenter.getListPresenter());
-    }
-
-    @Test
-    public void initPresenters_InitListItemPresenter_ListItemPresenterNotNull() {
-        assertNotNull(mainPresenter.getListItemPresenter());
     }
 
     @Test

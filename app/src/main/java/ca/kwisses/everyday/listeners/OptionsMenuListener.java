@@ -3,18 +3,13 @@ package ca.kwisses.everyday.listeners;
 import android.content.Context;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
-import java.util.List;
-
 import ca.kwisses.everyday.R;
 import ca.kwisses.everyday.checkbox_list.CheckBoxListHandler;
-
-import static android.view.View.VISIBLE;
 
 public class OptionsMenuListener implements ListenerContract.OptionsMenu {
 
@@ -32,16 +27,41 @@ public class OptionsMenuListener implements ListenerContract.OptionsMenu {
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
-        System.out.println("Clicked!");
+        String task = getAddTextFieldString();
+
+        if(task.length() == 0) {
+            Toast.makeText(context, "Please enter a task!", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
         switch(item.getItemId()) {
             case R.id.addTaskButton:
-                addTaskItemToList();
-                return true;
+                return addTask(task);
 
             case R.id.deleteTaskButton:
-                deleteTaskItemFromList();
+                checkBoxListHandler.deleteTaskItemFromList();
                 return true;
         }
+        return false;
+    }
+
+    @Override
+    public boolean addTask(String task) {
+        if(checkBoxListHandler.addTaskItemToList(task)) {
+            Toast.makeText(context, "Added!", Toast.LENGTH_LONG).show();
+            return true;
+        } else {
+            if(checkBoxListHandler.taskExists(task)) {
+                Toast.makeText(context, "Task already exists!", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(context, "List is full!", Toast.LENGTH_LONG).show();
+            }
+            return false;
+        }
+    }
+
+    @Override
+    public boolean deleteTask(String text) {
         return false;
     }
 
@@ -58,25 +78,8 @@ public class OptionsMenuListener implements ListenerContract.OptionsMenu {
     }
 
     @Override
-    public void addTaskItemToList() {
+    public String getAddTextFieldString() {
         EditText textField = view.findViewById(R.id.addTextField);
-        String text = textField.getText().toString();
-
-        if(checkBoxListHandler.hasInvisibleCheckBox()) {
-            CheckBox checkBox = checkBoxListHandler.getNextInvisibleCheckBox();
-            if(checkBox == null) { // refactor code...
-                return;
-            }
-            checkBox.setText(text);
-            checkBox.setChecked(false);
-            checkBox.setVisibility(VISIBLE);
-        }
-
-        Toast.makeText(context, "Added!", Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void deleteTaskItemFromList() {
-        System.out.println("Deleting!");
+        return textField.getText().toString();
     }
 }
