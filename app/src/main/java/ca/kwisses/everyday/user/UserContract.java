@@ -2,7 +2,6 @@ package ca.kwisses.everyday.user;
 
 import java.util.List;
 
-import ca.kwisses.everyday.list.ListItem;
 import ca.kwisses.everyday.log.Log;
 import ca.kwisses.everyday.main.MainPresenter;
 import ca.kwisses.everyday.settings.Settings;
@@ -10,10 +9,6 @@ import ca.kwisses.everyday.settings.Settings;
 public interface UserContract {
 
     interface Object {
-
-        List<ListItem> getListItems();
-
-        void setListItems(List<ListItem> listItems);
 
         void setMainPresenter(MainPresenter mainPresenter);
 

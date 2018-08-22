@@ -2,11 +2,9 @@ package ca.kwisses.everyday.main;
 
 import android.content.Context;
 
+import ca.kwisses.everyday.checkbox_list.CheckBoxListHandler;
 import ca.kwisses.everyday.dbhandler.DBHandler;
 import ca.kwisses.everyday.dbhandler.DBHandlerPresenter;
-import ca.kwisses.everyday.list.ListItem;
-import ca.kwisses.everyday.list.ListItemPresenter;
-import ca.kwisses.everyday.list.ListPresenter;
 import ca.kwisses.everyday.log.Log;
 import ca.kwisses.everyday.log.LogPresenter;
 import ca.kwisses.everyday.settings.Settings;
@@ -19,14 +17,13 @@ public class MainPresenter implements MainContract.Presenter {
     private Context context;
 
     private User user;
-    private ListItem listItem;
     private Log log;
     private Settings settings;
     private DBHandler dbHandler;
 
+    private CheckBoxListHandler checkBoxListHandler;
+
     private UserPresenter userPresenter;
-    private ListPresenter listPresenter;
-    private ListItemPresenter listItemPresenter;
     private LogPresenter logPresenter;
     private SettingsPresenter settingsPresenter;
     private DBHandlerPresenter dbHandlerPresenter;
@@ -40,17 +37,15 @@ public class MainPresenter implements MainContract.Presenter {
     @Override
     public void initObjects() {
         user = new User();
-        listItem = new ListItem();
         log = new Log();
         settings = new Settings();
         dbHandler = new DBHandler(context, null);
+        checkBoxListHandler = new CheckBoxListHandler();
     }
 
     @Override
     public void initPresenters() {
         userPresenter = new UserPresenter(user);
-        listPresenter = new ListPresenter();
-        listItemPresenter = new ListItemPresenter(listItem);
         logPresenter = new LogPresenter(log);
         settingsPresenter = new SettingsPresenter(settings);
         dbHandlerPresenter = new DBHandlerPresenter(dbHandler);
@@ -64,26 +59,6 @@ public class MainPresenter implements MainContract.Presenter {
     @Override
     public void setUserPresenter(UserPresenter userPresenter) {
         this.userPresenter = userPresenter;
-    }
-
-    @Override
-    public ListPresenter getListPresenter() {
-        return listPresenter;
-    }
-
-    @Override
-    public void setListPresenter(ListPresenter listPresenter) {
-        this.listPresenter = listPresenter;
-    }
-
-    @Override
-    public ListItemPresenter getListItemPresenter() {
-        return listItemPresenter;
-    }
-
-    @Override
-    public void setListItemPresenter(ListItemPresenter listItemPresenter) {
-        this.listItemPresenter = listItemPresenter;
     }
 
     @Override
@@ -114,5 +89,15 @@ public class MainPresenter implements MainContract.Presenter {
     @Override
     public void setDBHandlerPresenter(DBHandlerPresenter dbHandlerPresenter) {
         this.dbHandlerPresenter = dbHandlerPresenter;
+    }
+
+    @Override
+    public CheckBoxListHandler getCheckBoxListHandler() {
+        return this.checkBoxListHandler;
+    }
+
+    @Override
+    public void setCheckBoxListHandler(CheckBoxListHandler checkBoxListHandler) {
+        this.checkBoxListHandler = checkBoxListHandler;
     }
 }

@@ -2,9 +2,8 @@ package ca.kwisses.everyday.main;
 
 import android.content.Context;
 
+import ca.kwisses.everyday.checkbox_list.CheckBoxListHandler;
 import ca.kwisses.everyday.dbhandler.DBHandlerPresenter;
-import ca.kwisses.everyday.list.ListItemPresenter;
-import ca.kwisses.everyday.list.ListPresenter;
 import ca.kwisses.everyday.listeners.HeaderListener;
 import ca.kwisses.everyday.listeners.ListListener;
 import ca.kwisses.everyday.listeners.MenuListener;
@@ -32,14 +31,6 @@ public interface MainContract {
 
         void setUserPresenter(UserPresenter userPresenter);
 
-        ListPresenter getListPresenter();
-
-        void setListPresenter(ListPresenter listPresenter);
-
-        ListItemPresenter getListItemPresenter();
-
-        void setListItemPresenter(ListItemPresenter listItemPresenter);
-
         LogPresenter getLogPresenter();
 
         void setLogPresenter(LogPresenter logPresenter);
@@ -51,6 +42,10 @@ public interface MainContract {
         DBHandlerPresenter getDBHandlerPresenter();
 
         void setDBHandlerPresenter(DBHandlerPresenter dbHandlerPresenter);
+
+        CheckBoxListHandler getCheckBoxListHandler();
+
+        void setCheckBoxListHandler(CheckBoxListHandler checkBoxListHandler);
 
     }
 

@@ -10,18 +10,20 @@ import ca.kwisses.everyday.R;
 public class HeaderListener implements ListenerContract.Header {
 
     private Context context;
+    private View view;
     private PopupMenu popupMenu;
     private OptionsMenuListener optionsMenuListener;
 
     public HeaderListener(Context context, View view, OptionsMenuListener optionsMenuListener) {
         this.context = context;
+        this.view = view;
         this.optionsMenuListener = optionsMenuListener;
-        initPopupMenu(view);
+        initPopupMenu();
     }
 
     @Override
     public void onClick(View view) {
-        initPopupMenu(view);
+        initPopupMenu();
 
         MenuInflater menuInflater = popupMenu.getMenuInflater();
         menuInflater.inflate(R.menu.options_menu, popupMenu.getMenu());
@@ -45,8 +47,8 @@ public class HeaderListener implements ListenerContract.Header {
     }
 
     @Override
-    public void initPopupMenu(View view) {
-        this.optionsMenuListener.setPopupMenu(view);
+    public void initPopupMenu() {
+        this.optionsMenuListener.setPopupMenu();
         this.popupMenu = this.optionsMenuListener.getPopupMenu();
     }
 }

@@ -27,7 +27,7 @@ public class MainActivityListener implements MainContract.Listener {
 
     @Override
     public void initListeners(Context context) {
-        optionsMenuListener = new OptionsMenuListener(context);
+        optionsMenuListener = new OptionsMenuListener(context, view);
         headerListener = new HeaderListener(context, view, optionsMenuListener);
         listListener = new ListListener(context);
         menuListener = new MenuListener(context);

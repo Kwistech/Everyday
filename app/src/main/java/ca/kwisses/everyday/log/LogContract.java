@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import ca.kwisses.everyday.dbhandler.DBHandler;
-import ca.kwisses.everyday.list.ListItem;
 
 public interface LogContract {
 
@@ -24,14 +23,6 @@ public interface LogContract {
 
     interface Object {
 
-        List< List<ListItem> > get(); // change return value
-
-        void setLog(List< List<ListItem> > log);
-
-        List<ListItem> getList();
-
-        void setList(List<ListItem> list);
-
     }
 
     interface Presenter {
@@ -39,10 +30,6 @@ public interface LogContract {
         Log getLog();
 
         void setLog(Log log);
-
-        boolean addToLog(List<ListItem> listItem);
-
-        boolean isValidListItem(List<ListItem> listItem);
 
         String getCurrentDate();
 

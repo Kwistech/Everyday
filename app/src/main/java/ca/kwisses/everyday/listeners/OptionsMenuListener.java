@@ -3,7 +3,10 @@ package ca.kwisses.everyday.listeners;
 import android.content.Context;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 
 import ca.kwisses.everyday.R;
@@ -11,10 +14,12 @@ import ca.kwisses.everyday.R;
 public class OptionsMenuListener implements ListenerContract.OptionsMenu {
 
     private Context context;
+    private View view;
     private PopupMenu popupMenu;
 
-    public OptionsMenuListener(Context context) {
+    public OptionsMenuListener(Context context, View view) {
         this.context = context;
+        this.view = view;
     }
 
     @Override
@@ -33,7 +38,7 @@ public class OptionsMenuListener implements ListenerContract.OptionsMenu {
     }
 
     @Override
-    public void setPopupMenu(View view) {
+    public void setPopupMenu() {
         ImageButton optionsButton = view.findViewById(R.id.optionsButton);
         popupMenu = new PopupMenu(context, optionsButton);
         popupMenu.setOnMenuItemClickListener(this);
@@ -46,7 +51,9 @@ public class OptionsMenuListener implements ListenerContract.OptionsMenu {
 
     @Override
     public void addTaskItemToList() {
-        System.out.println("Adding!");
+        EditText textField = view.findViewById(R.id.addTextField);
+        String text = textField.getText().toString();
+        //CheckBox
     }
 
     @Override

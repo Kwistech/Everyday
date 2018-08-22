@@ -1,7 +1,6 @@
 package ca.kwisses.everyday.listeners;
 
 import android.view.MenuItem;
-import android.view.View;
 
 import org.junit.Before;
 import org.junit.Test;

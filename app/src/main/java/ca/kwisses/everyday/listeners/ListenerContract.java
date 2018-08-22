@@ -14,7 +14,7 @@ public interface ListenerContract {
 
         PopupMenu getPopupMenu();
 
-        void initPopupMenu(View view);
+        void initPopupMenu();
 
     }
 
@@ -30,7 +30,7 @@ public interface ListenerContract {
 
     interface OptionsMenu extends PopupMenu.OnMenuItemClickListener {
 
-        void setPopupMenu(View view);
+        void setPopupMenu();
 
         PopupMenu getPopupMenu();
 
