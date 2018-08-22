@@ -3,6 +3,7 @@ package ca.kwisses.everyday.main;
 import android.content.Context;
 import android.view.View;
 
+import ca.kwisses.everyday.checkbox_list.CheckBoxListHandler;
 import ca.kwisses.everyday.listeners.HeaderListener;
 import ca.kwisses.everyday.listeners.ListListener;
 import ca.kwisses.everyday.listeners.MenuListener;
@@ -12,6 +13,8 @@ public class MainActivityListener implements MainContract.Listener {
 
     private Context context;
     private View view;
+
+    private CheckBoxListHandler checkBoxListHandler;
 
     private HeaderListener headerListener;
     private ListListener listListener;
@@ -27,10 +30,17 @@ public class MainActivityListener implements MainContract.Listener {
 
     @Override
     public void initListeners(Context context) {
-        optionsMenuListener = new OptionsMenuListener(context, view);
+        checkBoxListHandler = new CheckBoxListHandler(view);
+
+        optionsMenuListener = new OptionsMenuListener(context, view, checkBoxListHandler);
         headerListener = new HeaderListener(context, view, optionsMenuListener);
         listListener = new ListListener(context);
         menuListener = new MenuListener(context);
+    }
+
+    @Override
+    public CheckBoxListHandler getCheckBoxListHandler() {
+        return this.checkBoxListHandler;
     }
 
     @Override

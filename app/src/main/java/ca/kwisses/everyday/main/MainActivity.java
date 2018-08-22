@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
         view = findViewById(android.R.id.content);
 
-        mainPresenter = new MainPresenter(this);
+        mainPresenter = new MainPresenter(this, view);
         mainActivityListener = new MainActivityListener(this, view);
 
         setObjectViews(mainPresenter);

@@ -43,16 +43,14 @@ public interface MainContract {
 
         void setDBHandlerPresenter(DBHandlerPresenter dbHandlerPresenter);
 
-        CheckBoxListHandler getCheckBoxListHandler();
-
-        void setCheckBoxListHandler(CheckBoxListHandler checkBoxListHandler);
-
     }
 
     interface Listener {
 
         // onClickListeners for MainActivity views
         void initListeners(Context context);
+
+        CheckBoxListHandler getCheckBoxListHandler();
 
         HeaderListener getHeaderListener();
 

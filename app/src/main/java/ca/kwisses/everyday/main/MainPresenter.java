@@ -1,6 +1,7 @@
 package ca.kwisses.everyday.main;
 
 import android.content.Context;
+import android.view.View;
 
 import ca.kwisses.everyday.checkbox_list.CheckBoxListHandler;
 import ca.kwisses.everyday.dbhandler.DBHandler;
@@ -15,21 +16,22 @@ import ca.kwisses.everyday.user.UserPresenter;
 public class MainPresenter implements MainContract.Presenter {
 
     private Context context;
+    private View view;
 
     private User user;
     private Log log;
     private Settings settings;
     private DBHandler dbHandler;
 
-    private CheckBoxListHandler checkBoxListHandler;
-
     private UserPresenter userPresenter;
     private LogPresenter logPresenter;
     private SettingsPresenter settingsPresenter;
     private DBHandlerPresenter dbHandlerPresenter;
 
-    MainPresenter(Context context) {
+    MainPresenter(Context context, View view) {
         this.context = context;
+        this.view = view;
+
         initObjects();
         initPresenters();
     }
@@ -40,7 +42,6 @@ public class MainPresenter implements MainContract.Presenter {
         log = new Log();
         settings = new Settings();
         dbHandler = new DBHandler(context, null);
-        checkBoxListHandler = new CheckBoxListHandler();
     }
 
     @Override
@@ -89,15 +90,5 @@ public class MainPresenter implements MainContract.Presenter {
     @Override
     public void setDBHandlerPresenter(DBHandlerPresenter dbHandlerPresenter) {
         this.dbHandlerPresenter = dbHandlerPresenter;
-    }
-
-    @Override
-    public CheckBoxListHandler getCheckBoxListHandler() {
-        return this.checkBoxListHandler;
-    }
-
-    @Override
-    public void setCheckBoxListHandler(CheckBoxListHandler checkBoxListHandler) {
-        this.checkBoxListHandler = checkBoxListHandler;
     }
 }
