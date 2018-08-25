@@ -29,8 +29,7 @@ public class OptionsMenuListener implements ListenerContract.OptionsMenu {
     public boolean onMenuItemClick(MenuItem item) {
         String task = getAddTextFieldString();
 
-        if(task.length() == 0) {
-            Toast.makeText(context, "Please enter a task!", Toast.LENGTH_LONG).show();
+        if(!isValidTask(task)) {
             return false;
         }
 
@@ -39,30 +38,51 @@ public class OptionsMenuListener implements ListenerContract.OptionsMenu {
                 return addTask(task);
 
             case R.id.deleteTaskButton:
-                checkBoxListHandler.deleteTaskItemFromList();
-                return true;
+                return deleteTask(task);
         }
         return false;
     }
 
     @Override
+    public boolean isValidTask(String task) {
+        if(task.length() == 0) {
+            Toast.makeText(context, R.string.please_enter_a_task, Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
+    }
+
+    @Override
     public boolean addTask(String task) {
-        if(checkBoxListHandler.addTaskItemToList(task)) {
-            Toast.makeText(context, "Added!", Toast.LENGTH_LONG).show();
+        if(!checkBoxListHandler.taskExists(task) && checkBoxListHandler.addTaskItemToList(task)) {
+            Toast.makeText(context, R.string.added, Toast.LENGTH_LONG).show();
             return true;
         } else {
             if(checkBoxListHandler.taskExists(task)) {
-                Toast.makeText(context, "Task already exists!", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, R.string.task_already_exists, Toast.LENGTH_LONG).show();
             } else {
-                Toast.makeText(context, "List is full!", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, R.string.list_is_full, Toast.LENGTH_LONG).show();
             }
             return false;
         }
     }
 
     @Override
-    public boolean deleteTask(String text) {
-        return false;
+    public boolean deleteTask(String task) {
+        if(checkBoxListHandler.deleteTaskItemFromList(task)) {
+            Toast.makeText(context, R.string.deleted_task_from_list, Toast.LENGTH_LONG).show();
+            return true;
+        } else {
+            if(!checkBoxListHandler.taskExists(task)) {
+                Toast.makeText(context, R.string.task_does_not_exist, Toast.LENGTH_LONG).show();
+            }
+            return false;
+        }
+    }
+
+    @Override
+    public PopupMenu getPopupMenu() {
+        return this.popupMenu;
     }
 
     @Override
@@ -70,11 +90,6 @@ public class OptionsMenuListener implements ListenerContract.OptionsMenu {
         ImageButton optionsButton = view.findViewById(R.id.optionsButton);
         popupMenu = new PopupMenu(context, optionsButton);
         popupMenu.setOnMenuItemClickListener(this);
-    }
-
-    @Override
-    public PopupMenu getPopupMenu() {
-        return this.popupMenu;
     }
 
     @Override

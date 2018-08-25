@@ -9,21 +9,25 @@ public interface CheckBoxListContract {
 
     interface Handler {
 
-        void initCheckBoxList(View view);
+        void initCheckBoxList(List<CheckBox> checkBoxList);
 
-        void setInvisible();
+        void setCheckBox(CheckBox checkBox, String text);
 
-        boolean hasInvisibleCheckBox();
+        void resetCheckbox(CheckBox checkBox);
+
+        CheckBox setInvisible(CheckBox checkBox);
+
+        boolean hasInvisibleCheckBox(List<CheckBox> checkBoxList);
 
         CheckBox getNextInvisibleCheckBox();
-
-        void setNextInvisibleCheckBox(String text);
 
         boolean taskExists(String task);
 
         boolean addTaskItemToList(String text);
 
-        boolean deleteTaskItemFromList();
+        boolean deleteTaskItemFromList(String task);
+
+        CheckBox getCheckbox(String task);
 
         List<CheckBox> getCheckBoxList();
 

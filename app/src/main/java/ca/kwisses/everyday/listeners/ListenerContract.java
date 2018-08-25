@@ -30,15 +30,17 @@ public interface ListenerContract {
 
     interface OptionsMenu extends PopupMenu.OnMenuItemClickListener {
 
-        void setPopupMenu();
-
-        PopupMenu getPopupMenu();
-
-        String getAddTextFieldString();
+        boolean isValidTask(String task);
 
         boolean addTask(String text);
 
         boolean deleteTask(String text);
+
+        PopupMenu getPopupMenu();
+
+        void setPopupMenu();
+
+        String getAddTextFieldString();
 
     }
 

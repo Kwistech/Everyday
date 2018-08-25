@@ -16,33 +16,43 @@ public class CheckBoxListHandler implements CheckBoxListContract.Handler {
     private View view;
     private List<CheckBox> checkBoxList;
 
-    private final int SIZE_LIMIT = 5;
-
     public CheckBoxListHandler(View view) {
         this.checkBoxList = new ArrayList<>();
         this.view = view;
-        initCheckBoxList(this.view);
-        setInvisible();
+        initCheckBoxList(this.checkBoxList);
     }
 
     @Override
-    public void initCheckBoxList(View view) {
-        checkBoxList.add((CheckBox) view.findViewById(R.id.checkBox1));
-        checkBoxList.add((CheckBox) view.findViewById(R.id.checkBox2));
-        checkBoxList.add((CheckBox) view.findViewById(R.id.checkBox3));
-        checkBoxList.add((CheckBox) view.findViewById(R.id.checkBox4));
-        checkBoxList.add((CheckBox) view.findViewById(R.id.checkBox5));
+    public void initCheckBoxList(List<CheckBox> checkBoxList) {
+        checkBoxList.add( (CheckBox) view.findViewById(R.id.checkBox1));
+        checkBoxList.add( (CheckBox) view.findViewById(R.id.checkBox2));
+        checkBoxList.add( (CheckBox) view.findViewById(R.id.checkBox3));
+        checkBoxList.add( (CheckBox) view.findViewById(R.id.checkBox4));
+        checkBoxList.add( (CheckBox) view.findViewById(R.id.checkBox5));
     }
 
     @Override
-    public void setInvisible() {
-        for(CheckBox checkBox: checkBoxList) {
-            checkBox.setVisibility(INVISIBLE);
-        }
+    public void setCheckBox(CheckBox checkBox, String text) {
+        checkBox.setText(text);
+        checkBox.setChecked(false);
+        checkBox.setVisibility(VISIBLE);
     }
 
     @Override
-    public boolean hasInvisibleCheckBox() {
+    public void resetCheckbox(CheckBox checkBox) {
+        checkBox.setText(null);
+        checkBox.setChecked(false);
+        checkBox.setVisibility(INVISIBLE);
+    }
+
+    @Override
+    public CheckBox setInvisible(CheckBox checkBox) {
+        checkBox.setVisibility(INVISIBLE);
+        return checkBox;
+    }
+
+    @Override
+    public boolean hasInvisibleCheckBox(List<CheckBox> checkBoxList) {
         for (CheckBox checkBox: checkBoxList) {
             if(checkBox.getVisibility() == INVISIBLE) {
                 return true;
@@ -62,14 +72,6 @@ public class CheckBoxListHandler implements CheckBoxListContract.Handler {
     }
 
     @Override
-    public void setNextInvisibleCheckBox(String text) {
-        CheckBox checkBox = getNextInvisibleCheckBox();
-        checkBox.setText(text);
-        checkBox.setChecked(false);
-        checkBox.setVisibility(VISIBLE);
-    }
-
-    @Override
     public boolean taskExists(String task) {
         for (CheckBox checkBox: checkBoxList) {
             if(checkBox.getText().equals(task)) {
@@ -81,16 +83,32 @@ public class CheckBoxListHandler implements CheckBoxListContract.Handler {
 
     @Override
     public boolean addTaskItemToList(String task) {
-        if(hasInvisibleCheckBox() && !taskExists(task)) {
-            setNextInvisibleCheckBox(task);
+        CheckBox checkBox = getNextInvisibleCheckBox();
+        if(checkBox != null) {
+            setCheckBox(checkBox, task);
             return true;
         }
         return false;
     }
 
     @Override
-    public boolean deleteTaskItemFromList() {
+    public boolean deleteTaskItemFromList(String task) {
+        CheckBox checkBox = getCheckbox(task);
+        if(checkBox != null) {
+            resetCheckbox(checkBox);
+            return true;
+        }
         return false;
+    }
+
+    @Override
+    public CheckBox getCheckbox(String task) {
+        for (CheckBox checkBox: checkBoxList) {
+            if(checkBox.getText().equals(task)) {
+                return checkBox;
+            }
+        }
+        return null;
     }
 
     @Override

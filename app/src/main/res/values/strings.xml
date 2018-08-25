@@ -9,4 +9,10 @@
     <string name="task">Task</string>
     <string name="addTaskButton">Add Task</string>
     <string name="deleteTaskButton">Delete Task</string>
+    <string name="added">Added!</string>
+    <string name="task_already_exists">Task already exists!</string>
+    <string name="list_is_full">List is full!</string>
+    <string name="please_enter_a_task">Please enter a task!</string>
+    <string name="deleted_task_from_list">Deleted task from list!</string>
+    <string name="task_does_not_exist">Task does not exist!</string>
 </resources>
