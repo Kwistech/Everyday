@@ -9,15 +9,11 @@ public interface CheckBoxListContract {
 
     interface Handler {
 
-        void initCheckBoxList(List<CheckBox> checkBoxList);
+        void initCheckBoxList();
 
         void setCheckBox(CheckBox checkBox, String text);
 
         void resetCheckbox(CheckBox checkBox);
-
-        CheckBox setInvisible(CheckBox checkBox);
-
-        boolean hasInvisibleCheckBox(List<CheckBox> checkBoxList);
 
         CheckBox getNextInvisibleCheckBox();
 
@@ -30,6 +26,8 @@ public interface CheckBoxListContract {
         CheckBox getCheckbox(String task);
 
         List<CheckBox> getCheckBoxList();
+
+        void setCheckBoxList(List<CheckBox> checkBoxList);
 
     }
 }

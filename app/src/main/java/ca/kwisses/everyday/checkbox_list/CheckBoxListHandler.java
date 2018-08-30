@@ -19,11 +19,10 @@ public class CheckBoxListHandler implements CheckBoxListContract.Handler {
     public CheckBoxListHandler(View view) {
         this.checkBoxList = new ArrayList<>();
         this.view = view;
-        initCheckBoxList(this.checkBoxList);
     }
 
     @Override
-    public void initCheckBoxList(List<CheckBox> checkBoxList) {
+    public void initCheckBoxList() {
         checkBoxList.add( (CheckBox) view.findViewById(R.id.checkBox1));
         checkBoxList.add( (CheckBox) view.findViewById(R.id.checkBox2));
         checkBoxList.add( (CheckBox) view.findViewById(R.id.checkBox3));
@@ -43,22 +42,6 @@ public class CheckBoxListHandler implements CheckBoxListContract.Handler {
         checkBox.setText(null);
         checkBox.setChecked(false);
         checkBox.setVisibility(INVISIBLE);
-    }
-
-    @Override
-    public CheckBox setInvisible(CheckBox checkBox) {
-        checkBox.setVisibility(INVISIBLE);
-        return checkBox;
-    }
-
-    @Override
-    public boolean hasInvisibleCheckBox(List<CheckBox> checkBoxList) {
-        for (CheckBox checkBox: checkBoxList) {
-            if(checkBox.getVisibility() == INVISIBLE) {
-                return true;
-            }
-        }
-        return false;
     }
 
     @Override
@@ -114,6 +97,11 @@ public class CheckBoxListHandler implements CheckBoxListContract.Handler {
     @Override
     public List<CheckBox> getCheckBoxList() {
         return checkBoxList;
+    }
+
+    @Override
+    public void setCheckBoxList(List<CheckBox> checkBoxList) {
+        this.checkBoxList = checkBoxList;
     }
 
 }

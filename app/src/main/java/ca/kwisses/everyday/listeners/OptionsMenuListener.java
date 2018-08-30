@@ -3,9 +3,9 @@ package ca.kwisses.everyday.listeners;
 import android.content.Context;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import ca.kwisses.everyday.R;
@@ -17,12 +17,14 @@ public class OptionsMenuListener implements ListenerContract.OptionsMenu {
     private View view;
     private CheckBoxListHandler checkBoxListHandler;
 
+    private TextView textField;
     private PopupMenu popupMenu;
 
     public OptionsMenuListener(Context context, View view, CheckBoxListHandler checkBoxListHandler) {
         this.context = context;
         this.view = view;
         this.checkBoxListHandler = checkBoxListHandler;
+        this.textField = this.view.findViewById(R.id.addTextField);
     }
 
     @Override
@@ -56,6 +58,7 @@ public class OptionsMenuListener implements ListenerContract.OptionsMenu {
     public boolean addTask(String task) {
         if(!checkBoxListHandler.taskExists(task) && checkBoxListHandler.addTaskItemToList(task)) {
             Toast.makeText(context, R.string.added, Toast.LENGTH_LONG).show();
+            this.textField.setText(null);
             return true;
         } else {
             if(checkBoxListHandler.taskExists(task)) {
@@ -71,6 +74,7 @@ public class OptionsMenuListener implements ListenerContract.OptionsMenu {
     public boolean deleteTask(String task) {
         if(checkBoxListHandler.deleteTaskItemFromList(task)) {
             Toast.makeText(context, R.string.deleted_task_from_list, Toast.LENGTH_LONG).show();
+            this.textField.setText(null);
             return true;
         } else {
             if(!checkBoxListHandler.taskExists(task)) {
@@ -94,7 +98,6 @@ public class OptionsMenuListener implements ListenerContract.OptionsMenu {
 
     @Override
     public String getAddTextFieldString() {
-        EditText textField = view.findViewById(R.id.addTextField);
-        return textField.getText().toString();
+        return this.textField.getText().toString();
     }
 }

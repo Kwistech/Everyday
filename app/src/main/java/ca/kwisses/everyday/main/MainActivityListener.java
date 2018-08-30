@@ -31,6 +31,7 @@ public class MainActivityListener implements MainContract.Listener {
     @Override
     public void initListeners(Context context) {
         checkBoxListHandler = new CheckBoxListHandler(view);
+        checkBoxListHandler.initCheckBoxList();
 
         optionsMenuListener = new OptionsMenuListener(context, view, checkBoxListHandler);
         headerListener = new HeaderListener(context, view, optionsMenuListener);
